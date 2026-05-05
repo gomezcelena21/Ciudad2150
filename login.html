@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="card">
+    <h2>🌆 Ciudad 2150</h2>
+
+    {% if error %}
+    <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST" action="/">
+        <input name="user" placeholder="Usuario" required>
+        <input name="password" type="password" placeholder="Contraseña" required>
+        <button type="submit">Ingresar</button>
+    </form>
+</div>
+
+</body>
+</html>

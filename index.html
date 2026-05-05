@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>🌆 Ciudad 2150</h1>
+
+<a href="/logout">Cerrar sesión</a>
+
+<h3>Registrar ciudadano</h3>
+<form method="POST" action="/agregar">
+    <input name="nombre" placeholder="Nombre" required>
+    <input name="edad" type="number" placeholder="Edad" required>
+    <button type="submit">Agregar</button>
+</form>
+
+<h3>Buscar</h3>
+<form method="POST" action="/buscar">
+    <input name="nombre" placeholder="Buscar nombre">
+    <button type="submit">Buscar</button>
+</form>
+
+<a href="/panel">Ver todos</a>
+
+<h3>Lista</h3>
+
+<ul>
+{% for c in ciudadanos %}
+    <li>
+        {{c.id}} - {{c.nombre}} ({{c.edad}})
+        <form action="/eliminar/{{c.id}}" method="POST" style="display:inline;">
+            <button type="submit">❌</button>
+        </form>
+    </li>
+{% endfor %}
+</ul>
+
+</body>
+</html>
